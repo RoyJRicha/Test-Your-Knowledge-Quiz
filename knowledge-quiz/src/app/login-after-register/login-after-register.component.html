@@ -1,16 +1,6 @@
 <div class="containter-fluid">
-    <h2>Create an Account</h2>
+    <h2>You may now login</h2>
     <form [formGroup]="registrationForm">
-
-        <div class="form-group">
-            <label>Email</label>
-            <input [class.is-invalid]="registrationForm.controls['email'].invalid && registrationForm.controls['email'].touched" type="text" formControlName="email" class="form-control">
-            <div *ngIf="registrationForm.controls['email'].invalid && registrationForm.controls['email'].touched">
-                <small *ngIf="registrationForm.controls['email'].errors?.required" class="text-danger">Email is required</small>
-                <small *ngIf="registrationForm.controls['email'].errors?.email" class="text-danger">Email is invalid</small>
-            </div>
-        </div>
-
         <div class="form-group">
             <label>Username</label>
             <input [class.is-invalid]="registrationForm.controls['userName'].invalid && registrationForm.controls['userName'].touched" formControlName="userName" type="text" class="form-control">
@@ -28,13 +18,7 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label>Confirm Password</label>
-            <input [class.is-invalid]="registrationForm.errors?.misMatch" formControlName="confirmPassword" type="password" class="form-control">
-            <small class="text-danger" *ngIf="registrationForm.errors?.misMatch">Passwords do not match</small>
-        </div>
-
-        <button [disabled]='!registrationForm.valid' routerLink="/login-after-register" routerLinkActive="active" class="btn btn-primary" type="submit">Register</button>
-
+        <button [disabled]='!registrationForm.valid' class="btn btn-primary" type="submit">Login</button>
+        
     </form>
 </div>
