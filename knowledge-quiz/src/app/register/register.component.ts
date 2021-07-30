@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
     email: ['', [Validators.required, Validators.email]],
     userName: ['', Validators.required],
     password: ['', [Validators.required, Validators.minLength(6)]],
-    confirmPassword: ['']
+    confirmPassword: ['', Validators.required]
   }, {validator: PasswordValidator});
 
   /*registrationForm = new FormGroup({

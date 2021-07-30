@@ -30,8 +30,14 @@
 
         <div class="form-group">
             <label>Confirm Password</label>
-            <input [class.is-invalid]="registrationForm.errors?.misMatch" formControlName="confirmPassword" type="password" class="form-control">
+            <input [class.is-invalid]="registrationForm.errors?.misMatch || registrationForm.controls['confirmPassword'].invalid && registrationForm.controls['confirmPassword'].touched" formControlName="confirmPassword" type="password" class="form-control">
             <small class="text-danger" *ngIf="registrationForm.errors?.misMatch">Passwords do not match</small>
+            <small class="text-danger" *ngIf="registrationForm.errors?.required">Confirmation is required</small>
+
+            <div *ngIf="registrationForm.controls['confirmPassword'].invalid && registrationForm.controls['confirmPassword'].touched">
+                <small *ngIf="registrationForm.controls['confirmPassword'].errors?.required" class="text-danger">Confirmation is required</small>
+                <small *ngIf="registrationForm.controls['confirmPassword'].errors?.misMatch" class="text-danger">Passwords do not match</small>
+            </div>
         </div>
 
         <button [disabled]='!registrationForm.valid' routerLink="/login-after-register" routerLinkActive="active" class="btn btn-primary" type="submit">Register</button>

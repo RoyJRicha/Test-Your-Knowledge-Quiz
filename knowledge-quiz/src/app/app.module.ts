@@ -9,6 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { LoginAfterRegisterComponent } from './login-after-register/login-after-register.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
+import { ViewSubjectsComponent } from './view-subjects/view-subjects.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
     HomeComponent,
     LoginAfterRegisterComponent,
     NavigationBarComponent,
+    ViewSubjectsComponent,
   ],
   imports: [
     BrowserModule,
