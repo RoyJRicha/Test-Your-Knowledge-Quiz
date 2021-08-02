@@ -1,0 +1,23 @@
+<br>
+<div style="text-align: center" > 
+    <h1>
+        How it Works
+    </h1>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+        <th *ngFor = "let column of headers">
+          {{column}}
+        </th>
+      </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let row of rows">
+        <td *ngFor = "let column of headers">
+          {{row}}
+        </td>
+    </tr>
+  </tbody>
+</table>
