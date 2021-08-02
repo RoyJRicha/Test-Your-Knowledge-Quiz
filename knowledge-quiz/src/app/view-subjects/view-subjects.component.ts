@@ -7,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewSubjectsComponent implements OnInit {
 
+  buttons = [
+    { name: 'Math',},
+    { name: 'Science',},
+    { name: 'Computer Science',},
+    { name: 'History',},
+    { name: 'English',}
+    ];
+
   constructor() { }
 
   ngOnInit(): void {
