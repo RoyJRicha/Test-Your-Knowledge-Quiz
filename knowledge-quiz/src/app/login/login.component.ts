@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { map } from 'rxjs/operators';
+import { AlertService, AuthenticationService } from '../services';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +12,15 @@ import { map } from 'rxjs/operators';
 })
 export class LoginComponent implements OnInit {
   currentUserSubject: any;
+  loginForm!: FormGroup;
+  loading = false;
+  submitted = false;
+  returnUrl!: string;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {}
+  constructor(private fb: FormBuilder, private http: HttpClient, private route: ActivatedRoute,
+    private router: Router,
+    private authenticationService: AuthenticationService,
+    private alertService: AlertService) {}
 
   registrationForm = this.fb.group({
     userName: ['', Validators.required],
@@ -36,6 +45,33 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  get f() { return this.loginForm.controls; }
+
+    onSubmit() {
+        this.submitted = true;
+
+        // stop here if form is invalid
+        if (this.loginForm.invalid) {
+            return;
+        }
+
+        this.loading = true;
+        this.authenticationService.login(this.f.username.value, this.f.password.value)
+            .pipe(first())
+            .subscribe(
+                data => {
+                    this.router.navigate([this.returnUrl]);
+                },
+                error => {
+                    this.alertService.error(error);
+                    this.loading = false;
+                });
+    }
+
   
 
 }
+function first(): import("rxjs").OperatorFunction<any, unknown> {
+  throw new Error('Function not implemented.');
+}
+
