@@ -12,9 +12,9 @@ export class QuizInfoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  headers = ["Quiz Number", "Education Level", "Depth of Knowledge"];
+  headers: any[] = ["Quiz Number", "Education Level", "Depth of Knowledge"];
 
-  rows = [
+  rows: any[] = [
     {
       "Quiz Number" : "Quiz #1",
       "Education Level" : "Beginning Elementary",
@@ -61,7 +61,7 @@ export class QuizInfoComponent implements OnInit {
       "Depth of Knowledge" : "4"
     },
     {
-      "Quiz Number" : "Quiz #8",
+      "Quiz Number" : "Quiz #10",
       "Education Level" : "End of College",
       "Depth of Knowledge" : "4"
     }

@@ -16,7 +16,7 @@
   <tbody>
     <tr *ngFor = "let row of rows">
         <td *ngFor = "let column of headers">
-          {{row}}
+          {{row[column]}}
         </td>
     </tr>
   </tbody>
