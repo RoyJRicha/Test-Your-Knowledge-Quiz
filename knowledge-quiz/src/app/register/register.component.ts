@@ -11,7 +11,6 @@ import { PasswordValidator } from '../shared/password.validator';
 })
 export class RegisterComponent implements OnInit {
 
-  registerForm!: FormGroup;
   loading = false;
   submitted = false;
 
@@ -36,19 +35,22 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  get f() { return this.registerForm.controls; }
+  get f() { return this.registrationForm.controls; }
 
     onSubmit() {
         this.submitted = true;
 
+        console.log(this.registrationForm);
+
         // stop here if form is invalid
-        if (this.registerForm.invalid) {
+        /*if (this.registerForm.invalid) {
+            console.log('Form Is Invalid');
             return;
-        }
+        }*/
 
         this.loading = true;
-        this.userService.register(this.registerForm.value)
-            .pipe(first())
+        console.log('Check 1');
+        this.userService.register(this.registrationForm.value)
             .subscribe(
                 data => {
                     this.alertService.success('Registration successful', true);
